@@ -1,0 +1,12 @@
+@import './variables';
+
+* {
+  margin: 0;
+  font-family: $font;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+}
