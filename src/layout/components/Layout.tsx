@@ -1,10 +1,10 @@
-export default function Layout(props: {children: JSX.Element}) {
-  const styles = {
-    margin: '0 10%',
-  };
+import { Navbar } from "./";
+import styles from './layout.module.scss';
 
+export default function Layout(props: {children: JSX.Element}) {
   return (
-    <div style={styles}>
+    <div className={styles.layout}>
+      <Navbar />
       {props.children}
     </div>
   )
