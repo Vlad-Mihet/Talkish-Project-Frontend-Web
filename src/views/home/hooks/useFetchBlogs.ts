@@ -7,7 +7,7 @@ import type { Blog } from '../../../types';
 
 interface StateType {
   loading: Boolean;
-  blogs: [] | Blog[];
+  blogs: Blog[];
   error: Error | AxiosError | null;
 };
 
@@ -19,8 +19,9 @@ function useFetchBlogs(): StateType {
   });
 
   useEffect(() => {
-    axios.get('https://localhost:5001/api/Blog')
+    axios.get('https://localhost:5001/api/Blogs')
       .then((res) => {
+        console.log(res.data);
         setState({
           ...state,
           blogs: res.data,

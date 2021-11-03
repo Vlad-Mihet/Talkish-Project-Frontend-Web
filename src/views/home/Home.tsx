@@ -25,7 +25,7 @@ export default function Home(): JSX.Element {
                 title={blog.title}
                 content={blog.content}
                 authorId={blog.authorId}
-                authorName={blog.authorName}
+                authorName={`${blog.author.firstName} ${blog.author.lastName}`}
               />
             ))}
           </div>
