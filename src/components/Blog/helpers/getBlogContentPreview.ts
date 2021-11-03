@@ -1,9 +1,8 @@
 /**
- * getBlogContentPreview
- * Retrieves the initial words / paragraphs of a blog
+ * Returns a short preview of a given blog based on its content
  * 
  * @param {string} blogContent
- * @returns {string}
+ * @returns {string} A short preview of a blog
  */
 
 function getBlogContentPreview(blogContent: string): string {
