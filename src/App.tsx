@@ -1,5 +1,4 @@
 import './assets/styles/main.scss';
-import Home from './views/home/Home';
 import { Paths } from './routes';
 import {
   BrowserRouter as Router,
@@ -7,11 +6,17 @@ import {
   Route,
 } from "react-router-dom";
 
+import {
+  Home,
+  Blog,
+} from './views';
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path={Paths.ROOT} element={<Home />} />
+        <Route path={Paths.BLOG} element={<Blog />} />
       </Routes>
     </Router>
   );
