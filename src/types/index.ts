@@ -1,6 +1,8 @@
 export interface Author {
   authorId: number;
-  authorName: string;
+  email: string;
+  firstName: string;
+  lastName: string;
 }
 
 export interface Blog {
