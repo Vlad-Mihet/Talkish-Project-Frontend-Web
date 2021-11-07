@@ -9,7 +9,7 @@ type BlogProps = Omit<BlogType, 'author'> & {
   authorName: string,
 }
 
-export default function Blog(props: BlogProps) {
+export default function Blog(props: BlogProps): JSX.Element {
   const navigate = useNavigate();
 
   const {
@@ -19,7 +19,7 @@ export default function Blog(props: BlogProps) {
     blogId,
   } = props;
 
-  const handleViewBlog = () => navigate(Paths.BLOGS + '/' + blogId);
+  const handleViewBlog = () => navigate(Paths.ROOT + Paths.BLOGS + '/' + blogId);
 
   return (
     <div className={styles.blog}>
