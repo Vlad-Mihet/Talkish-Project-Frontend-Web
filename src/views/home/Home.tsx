@@ -6,8 +6,6 @@ export default function Home(): JSX.Element {
   // Fetch all blog data here
   const { blogs, loading, error } = useFetchBlogs();
 
-  console.log(blogs);
-
   if (error) {
     console.log(error);
   }
@@ -25,7 +23,7 @@ export default function Home(): JSX.Element {
                 title={blog.title}
                 content={blog.content}
                 authorId={blog.authorId}
-                authorName={`${blog.author.firstName} ${blog.author.lastName}`}
+                authorName={blog.author.authorName}
               />
             ))}
           </div>
