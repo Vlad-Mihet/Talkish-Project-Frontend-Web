@@ -21,7 +21,6 @@ function useFetchBlogs(): StateType {
   useEffect(() => {
     axios.get('https://localhost:5001/api/Blogs')
       .then((res) => {
-        console.log(res.data);
         setState({
           ...state,
           blogs: res.data,
