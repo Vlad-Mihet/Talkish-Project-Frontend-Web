@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 // Types
 import type{ AxiosError } from 'axios'
 import type { Blog } from '../../../types';
-
 interface StateType {
   loading: Boolean;
   blogs: Blog[];

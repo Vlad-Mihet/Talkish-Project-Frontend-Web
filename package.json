@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@vlad-mihet/web-components": "^0.1.6-dev",
     "axios": "^0.24.0",
     "install": "^0.13.0",
     "node-sass": "4.14.1",
