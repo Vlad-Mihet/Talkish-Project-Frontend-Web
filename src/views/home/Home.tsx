@@ -1,12 +1,19 @@
 import Layout from 'src/layout/components/Layout';
 import { Blog } from '../../components';
-import useFetchBlogs from './hooks/useFetchBlogs';
+import useFetchData from '../../hooks/useFetchData';
+import { Endpoints } from '../../config';
+import type { Blog as BlogType } from '../../types';
 
 export default function Home(): JSX.Element {
   // Fetch all blog data here
-  const { blogs, loading, error } = useFetchBlogs();
+  const fetchAllBlogsUrl = Endpoints.ROOT + '/' + Endpoints.BLOGS;
 
-  console.log(blogs);
+  const { data, loading, error } = useFetchData(fetchAllBlogsUrl);
+
+  /*
+    TODO:
+      Banner Component for errors
+  */
 
   if (error) {
     console.log(error);
@@ -18,14 +25,14 @@ export default function Home(): JSX.Element {
         ? (<span>Loading data...</span>)
         : (
           <div>
-            {blogs.map((blog) => (
+            {data && data.map((blog: BlogType) => (
               <Blog
                 key={blog.blogId}
-                blogId={blog.authorId}
+                blogId={blog.blogId}
                 title={blog.title}
                 content={blog.content}
                 authorId={blog.authorId}
-                authorName={`${blog.author.firstName} ${blog.author.lastName}`}
+                authorName={blog.author.authorName}
               />
             ))}
           </div>

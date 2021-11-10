@@ -1,13 +1,15 @@
 import Layout from "src/layout/components/Layout";
-import useFetchBlogData from './hooks/useFetchBlogData';
+import useFetchData from '../../hooks/useFetchData';
 import { useParams } from 'react-router-dom';
 import styles from './blog.module.scss'
+import { Endpoints } from '../../config'; 
 
 export default function Blog(): JSX.Element {
-  const { blogId } = useParams(); 
+  const { blogId } = useParams();
 
-  // Fetch specific blog data
-  const { blog, loading, error } = useFetchBlogData(parseInt(blogId));
+  const fetchBlogByIdUrl = Endpoints.ROOT + '/' + Endpoints.BLOGS + '/' + blogId;
+
+  const { data: blog, loading, error } = useFetchData(fetchBlogByIdUrl);
 
   if (error) {
     console.error(error);
