@@ -1,30 +1,33 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
-
-// Types
-import type{ AxiosError } from 'axios'
-import type { Blog } from '../../../types';
+import axios from 'axios';
+import type {
+  AxiosRequestConfig,
+  AxiosError,
+} from 'axios';
 
 interface StateType {
   loading: Boolean;
-  blog: Blog | null;
+  data: any;
   error: Error | AxiosError | null;
 };
 
-function useFetchBlogData(blogId: number): StateType {
+function useFetchData(
+  url: string,
+  requestConfig?: AxiosRequestConfig
+): StateType {
   const [state, setState] = useState<StateType>({
     loading: true,
-    blog: null,
+    data: null,
     error: null,
   });
 
   useEffect(() => {
-    axios.get(`https://localhost:5001/api/Blogs/${blogId}`)
+    axios.get(url, requestConfig)
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
         setState({
           ...state,
-          blog: res.data,
+          data: res.data,
           loading: false,
         });
       })
@@ -40,4 +43,4 @@ function useFetchBlogData(blogId: number): StateType {
   return state;
 }
 
-export default useFetchBlogData;
+export default useFetchData;

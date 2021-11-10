@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import clearHomepageBlogsCache from './utils/clearHomepageBlogsCache';
 import './assets/styles/main.scss';
 import { Paths } from './routes';
 import {
@@ -12,6 +14,15 @@ import {
 } from './views';
 
 function App() {
+  useEffect(() => {
+    const timer = clearHomepageBlogsCache();
+
+    // Clear timer on unmount
+    return () => {
+      clearInterval(timer);
+    }
+  }, []);
+
   return (
     <Router>
       <Routes>
