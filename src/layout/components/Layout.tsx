@@ -1,11 +1,19 @@
 import { Navbar } from "./";
 import styles from './layout.module.scss';
 
-export default function Layout(props: {children: JSX.Element}) {
+export default function Layout(props: {
+  children: JSX.Element;
+  sidebar?: JSX.Element;
+}) {
   return (
     <div className={styles.layout}>
       <Navbar />
-      {props.children}
+      <div className={styles.main}>
+        <div className={styles['main-content']}>
+          {props.children}
+        </div>
+        {props.sidebar}
+      </div>
     </div>
   )
 }

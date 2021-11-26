@@ -1,5 +1,6 @@
 import Layout from 'src/layout/components/Layout';
 import { Blog } from '../../components';
+import Sidebar from '../../layout/components/Sidebar';
 import useFetchData from '../../hooks/useFetchData';
 import { Endpoints } from '../../config';
 import type { BlogWithAuthor as BlogType } from '../../types';
@@ -20,7 +21,15 @@ export default function Home(): JSX.Element {
   }
 
   return (
-    <Layout>
+    <Layout
+      sidebar={
+        <Sidebar
+          topSection={<div>This is the top</div>}
+          middleSection={<div>This is the middle</div>}
+          bottomSection={<div>This is the bottom</div>}
+        />
+      }
+    >
       {loading
         ? (<span>Loading data...</span>)
         : (
