@@ -1,9 +1,9 @@
 import styles from './sidebar.module.scss'
 
 interface SidebarProps {
-  topSection: JSX.Element;
-  middleSection: JSX.Element;
-  bottomSection: JSX.Element;
+  topSection?: JSX.Element;
+  middleSection?: JSX.Element;
+  bottomSection?: JSX.Element;
 }
 
 export default function Sidebar(props: SidebarProps): JSX.Element {

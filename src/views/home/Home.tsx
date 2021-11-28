@@ -1,28 +1,22 @@
+import { Suspense, useEffect } from 'react';
 import Layout from 'src/layout/components/Layout';
 import { Blog } from '../../components';
 import Sidebar from '../../layout/components/Sidebar';
-import RecommendedTopics from '../../layout/components/RecommendedTopics';
 import useFetchData from '../../hooks/useFetchData';
 import { Endpoints } from '../../config';
 import type { BlogWithAuthor as BlogType } from '../../types';
-import { Suspense, useEffect } from 'react';
+import RecommendedTopics from '../../layout/components/RecommendedTopics';
+import RecommendedAuthors from '../../layout/components/RecommendedAuthors';
 
 export default function Home(): JSX.Element {
   // Fetch all blog data here
   const fetchAllBlogsUrl = Endpoints.ROOT + '/' + Endpoints.BLOGS;
-  const fetchAllTopicsUrl = Endpoints.ROOT + '/' + Endpoints.TOPICS;
 
   const {
     data: blogs,
     loading: blogsLoading,
     error: blogsError,
   } = useFetchData(fetchAllBlogsUrl);
-
-  const {
-    data: topics,
-    loading: topicsLoading,
-    error: topicsError,
-  } = useFetchData(fetchAllTopicsUrl);
 
   /*
     TODO:
@@ -35,25 +29,20 @@ export default function Home(): JSX.Element {
     }
   }, [blogsLoading, blogsError]);
 
-  useEffect(() => {
-    if (!topicsLoading && topicsError) {
-      console.error(`There was an issue: ${topicsError}`);
-    }
-  }, [topicsLoading, topicsError])
-
   return (
     <Layout
       sidebar={
         <Sidebar
           topSection={
-            <Suspense fallback={<p>Loading Recommended Topics...</p>}>
-              <RecommendedTopics
-                topics={topics}
-              />
+            <Suspense fallback={<p>Loading Data...</p>}>
+              <RecommendedTopics />
             </Suspense>
           }
-          middleSection={<div>This is the middle</div>}
-          bottomSection={<div>This is the bottom</div>}
+          middleSection={
+            <Suspense fallback={<p>Loading Data...</p>}>
+              <RecommendedAuthors />
+            </Suspense>
+          }
         />
       }
     >
