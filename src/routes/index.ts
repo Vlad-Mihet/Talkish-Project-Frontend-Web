@@ -1,7 +1,9 @@
 export enum Paths {
   BLOGS = 'blogs',
-  BLOG = 'blogs/:blogId',
-  AUTHOR = 'author',
+  BLOG = '/:blogId',
+  AUTHOR = '/:authorId',
+  TOPICS = 'topics',
+  TOPIC = '/:topicId',
   ROOT = '/',
   PAGE_NOT_FOUND = '*',
 }

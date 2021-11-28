@@ -6,7 +6,7 @@ import type {
 } from 'axios';
 
 interface StateType {
-  loading: Boolean;
+  loading: boolean;
   data: any;
   error: Error | AxiosError | null;
 };

@@ -10,6 +10,13 @@ export interface BlogAuthor {
   authorName: string;
 }
 
+export interface Author {
+  authorId: number;
+  firstName: string;
+  lastName: string;
+  /* Will also receive email & bio */
+}
+
 export interface BlogWithAuthor {
   blogId: number;
   title: string;
