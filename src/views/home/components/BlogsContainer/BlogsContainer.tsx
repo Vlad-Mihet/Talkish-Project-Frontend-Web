@@ -1,6 +1,6 @@
 import { Blog } from '../../../../components';
 import { Endpoints } from '../../../../config';
-import type { BlogWithAuthor as BlogType } from '../../../../types';
+import type { BlogWithAuthor as BlogType } from '../../../../types/models';
 import useFetchData from '../../../../hooks/useFetchData';
 import { useEffect } from 'react';
 

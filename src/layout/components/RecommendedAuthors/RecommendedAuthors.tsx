@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { CButton } from 'src/components';
 import { Endpoints } from 'src/config';
 import useFetchData from 'src/hooks/useFetchData';
-import { Author } from '../../../types';
+import { Author } from '../../../types/models';
 import styles from './recommendedAuthors.module.scss';
 
 const fetchAllAuthorsUrl = Endpoints.ROOT + '/' + Endpoints.AUTHORS;

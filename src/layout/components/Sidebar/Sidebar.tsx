@@ -1,4 +1,6 @@
 import styles from './sidebar.module.scss'
+import { UsefulLinks } from '../../../routes';
+// import { StringMap } from '../../../types/utilityTypes';
 
 interface SidebarProps {
   topSection?: JSX.Element;
@@ -17,6 +19,13 @@ export default function Sidebar(props: SidebarProps): JSX.Element {
       </div>
       <div className={styles['bottom-section']}>
         {props.bottomSection}
+      </div>
+      <div className={styles['useful-links-container']}>
+        {Object.keys(UsefulLinks).map((routeName, index) => (
+          <p key={index}>
+            {routeName}
+          </p>
+        ))}
       </div>
     </div>
   )

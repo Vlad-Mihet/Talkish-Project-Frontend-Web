@@ -1,4 +1,4 @@
-import type { BlogWithAuthor as BlogType } from '../../types';
+import type { BlogWithAuthor as BlogType } from '../../types/models';
 import getBlogContentPreview from './helpers/getBlogContentPreview';
 import styles from './blog.module.scss';
 import { useNavigate } from 'react-router-dom';

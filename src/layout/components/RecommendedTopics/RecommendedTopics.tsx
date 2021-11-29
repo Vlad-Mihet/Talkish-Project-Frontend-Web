@@ -1,4 +1,4 @@
-import { Topic } from '../../../types';
+import { Topic } from '../../../types/models';
 import styles from './recommendedTopics.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from '../../../routes';
