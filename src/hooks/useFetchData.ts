@@ -34,7 +34,8 @@ function useFetchData(
       .catch((err: Error | AxiosError) => {
         setState({
           ...state,
-          error: err
+          error: err,
+          loading: false,
         });
       });
       // eslint-disable-next-line

@@ -18,7 +18,7 @@ export default function RecommendedAuthors() {
     if (!loading && error) {
       console.error(`There was an issue: ${error}`);
     }
-  }, [loading, error])
+  }, [loading, error, authors])
   
   return (
     <div className={styles.recommendedAuthors}>
