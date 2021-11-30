@@ -1,12 +1,13 @@
 import styles from './sidebar.module.scss'
 import { UsefulLinks } from '../../../routes';
-// import { StringMap } from '../../../types/utilityTypes';
 
 interface SidebarProps {
   topSection?: JSX.Element;
   middleSection?: JSX.Element;
   bottomSection?: JSX.Element;
 }
+
+const capitalizeString = (str: string) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 
 export default function Sidebar(props: SidebarProps): JSX.Element {
   return (
@@ -23,7 +24,7 @@ export default function Sidebar(props: SidebarProps): JSX.Element {
       <div className={styles['useful-links-container']}>
         {Object.keys(UsefulLinks).map((routeName, index) => (
           <p key={index}>
-            {routeName.charAt(0) + routeName.slice(1).toLowerCase()}
+            {capitalizeString(routeName)}
           </p>
         ))}
       </div>

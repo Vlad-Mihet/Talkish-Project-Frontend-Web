@@ -50,7 +50,7 @@ export default function RecommendedAuthors() {
             ))}
           </div>
         ) : (
-          <p>There was an error loading the data...</p>
+          <p>There was an error loading the data.</p>
         )
       )}
     </div>
