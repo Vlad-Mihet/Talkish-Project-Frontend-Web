@@ -1,4 +1,4 @@
-import { Topic } from '../../../types';
+import { Topic } from '../../../types/models';
 import styles from './recommendedTopics.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from '../../../routes';
@@ -45,7 +45,7 @@ export default function RecommendedTopics() {
             ))}
           </div>
         ) : (
-          <p>There was an error loading the data...</p>
+          <p>There was an error loading the data.</p>
         )
       )}
     </div>

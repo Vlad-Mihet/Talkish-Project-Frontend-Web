@@ -1,4 +1,4 @@
-import { Navbar } from "./";
+import { Navbar } from "./components";
 import styles from './layout.module.scss';
 
 export default function Layout(props: {

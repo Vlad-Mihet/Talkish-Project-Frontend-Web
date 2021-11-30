@@ -11,12 +11,28 @@
   box-sizing: border-box;
   padding-top: 15vh;
 
-
   .top-section,
   .middle-section,
-  .bottom-section {
+  .bottom-section,
+  .useful-links-container {
     box-sizing: border-box;
     padding: 2.5vh 2.5vw;
     width: 100%;
+  }
+
+  .useful-links-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    p {
+      margin-right: 0.9rem;
+      color: #333;
+
+      &:hover {
+        cursor: pointer;
+        color: #c8c8c8;
+      }
+    }
   }
 }

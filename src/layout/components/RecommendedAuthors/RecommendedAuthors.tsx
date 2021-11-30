@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { CButton } from 'src/components';
 import { Endpoints } from 'src/config';
 import useFetchData from 'src/hooks/useFetchData';
-import { Author } from '../../../types';
+import { Author } from '../../../types/models';
 import styles from './recommendedAuthors.module.scss';
 
 const fetchAllAuthorsUrl = Endpoints.ROOT + '/' + Endpoints.AUTHORS;
@@ -18,7 +18,7 @@ export default function RecommendedAuthors() {
     if (!loading && error) {
       console.error(`There was an issue: ${error}`);
     }
-  }, [loading, error])
+  }, [loading, error, authors])
   
   return (
     <div className={styles.recommendedAuthors}>
@@ -50,7 +50,7 @@ export default function RecommendedAuthors() {
             ))}
           </div>
         ) : (
-          <p>There was an error loading the data...</p>
+          <p>There was an error loading the data.</p>
         )
       )}
     </div>
