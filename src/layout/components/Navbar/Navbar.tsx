@@ -1,5 +1,8 @@
 import styles from './navbar.module.scss';
 import { CButton } from '../../../components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faBookmark } from '@fortawesome/free-regular-svg-icons';
 
 export default function Navbar() {
   return (
@@ -9,21 +12,23 @@ export default function Navbar() {
           <h2>Talkish</h2>
         </div>
         <div className={styles['right-options-wrapper']}>
-          {/*
-            This section is dedicated towards basic commands and user avatar, alongside
-            the dropdown that will be triggered by a click on the user's avatar
-          */}
-
-          {/* These will be replaced by icons and components from the external component library */}
-          <span>Search</span>
-          <span>Reading List</span>
-          <span>Notifications</span>
+          <FontAwesomeIcon
+            icon={faSearch}
+            className={styles.icon}
+          />
+          <FontAwesomeIcon
+            icon={faBookmark}
+            className={styles.icon}
+          />
+          <FontAwesomeIcon
+            icon={faBell}
+            className={styles.icon}
+          />
           <CButton rounded>
             <span>
               Write
             </span>
           </CButton>
-          <div>User Avatar</div>
         </div>
       </div>
     </div>
