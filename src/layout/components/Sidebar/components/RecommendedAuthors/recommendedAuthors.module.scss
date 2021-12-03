@@ -1,0 +1,22 @@
+.recommendedAuthors {
+  width: 100%;
+
+  h4 {
+    margin-bottom: 0.75rem;
+  }
+
+  .authors {
+    width: 100%;
+
+    .authorCard {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      &:not(:last-child) {
+        margin-bottom: 1.25rem;
+      }
+    }
+  }
+}
