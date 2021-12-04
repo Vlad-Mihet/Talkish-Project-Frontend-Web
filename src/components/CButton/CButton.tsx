@@ -8,7 +8,7 @@ import { MouseEventHandler } from 'react';
       such as it was done for the `onClick` event
   */
 
-type Props = {
+interface Props {
   children: Element | JSX.Element | string;
   color?: string;
   size?: string;

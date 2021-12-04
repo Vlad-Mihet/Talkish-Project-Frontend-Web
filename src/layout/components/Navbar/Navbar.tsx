@@ -3,6 +3,15 @@ import { CButton } from '../../../components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faBell, faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { Link } from "react-router-dom";
+import { Paths } from '../../../routes';
+
+const {
+  ROOT,
+  WRITE_STORY
+} = Paths;
+
+const goToWriteNewStoryUrl = ROOT + WRITE_STORY;
 
 export default function Navbar() {
   return (
@@ -24,10 +33,10 @@ export default function Navbar() {
             icon={faBell}
             className={styles.icon}
           />
-          <CButton rounded>
-            <span>
+          <CButton rounded >
+            <Link to={goToWriteNewStoryUrl}>
               Write
-            </span>
+            </Link>
           </CButton>
         </div>
       </div>
