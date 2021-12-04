@@ -9,7 +9,7 @@ import { MouseEventHandler } from 'react';
   */
 
 type Props = {
-  children: Element | JSX.Element;
+  children: Element | JSX.Element | string;
   color?: string;
   size?: string;
   filled?: boolean;
