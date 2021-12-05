@@ -1232,6 +1232,14 @@
   dependencies:
     ckeditor5 "^31.0.0"
 
+"@ckeditor/ckeditor5-autosave@^31.0.0":
+  version "31.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-autosave/-/ckeditor5-autosave-31.0.0.tgz#e4228f8c311d298760d420a7dda2f1c87e59a0c3"
+  integrity sha512-vAKws5CECV9yF3opjP3YTi4R0Uuh1qprQcsvw6mniEz3k/UpDjciXUJCzG8GzlbfVfJakC40HIkLiZqmr78RNw==
+  dependencies:
+    ckeditor5 "^31.0.0"
+    lodash-es "^4.17.15"
+
 "@ckeditor/ckeditor5-basic-styles@^31.0.0":
   version "31.0.0"
   resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-basic-styles/-/ckeditor5-basic-styles-31.0.0.tgz#e65e3b3fd6133b8fa27cca7d30ae61f66f194619"
@@ -1349,6 +1357,13 @@
   version "31.0.0"
   resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-heading/-/ckeditor5-heading-31.0.0.tgz#a0eae16d9d5b0288b250596502a7e9b8f89815d4"
   integrity sha512-bAcNG2K7sZWxvTJTriof/lsR81o4QGbpaFcwj62QfTjYP+To5jlD4YhUIcCbg1YpiwlbJr8tv6PuWH6MkNh/5g==
+  dependencies:
+    ckeditor5 "^31.0.0"
+
+"@ckeditor/ckeditor5-highlight@^31.0.0":
+  version "31.0.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-highlight/-/ckeditor5-highlight-31.0.0.tgz#f5b8df9106dfc675b97c0f7774f86a7c74e0a6b7"
+  integrity sha512-mKQL50/j5xEnp7cU3EFWG2QjIInRuC8k3ii16hOv33kzkqXT0uEb3cf8SUV+Vf+K80XM5mA5y4iHraVX/OQYrQ==
   dependencies:
     ckeditor5 "^31.0.0"
 
