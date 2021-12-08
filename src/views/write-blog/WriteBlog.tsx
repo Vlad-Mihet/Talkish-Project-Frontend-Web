@@ -1,12 +1,10 @@
 import Editor from 'src/components/Editor/Editor';
 import Layout from 'src/layout/Layout';
 import styles from './write-blog.module.scss';
-import type ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-
 interface EditorEvent {
   id: string;
   data?: string;
-  editor?: ClassicEditor | null;
+  editor?: any;
   evtName: string;
 }
 

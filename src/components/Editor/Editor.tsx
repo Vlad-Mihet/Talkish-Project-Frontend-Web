@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import styles from './editor.module.scss';
-import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+import BalloonEditor from '@ckeditor/ckeditor5-editor-balloon/src/ballooneditor';
 import { debounce } from 'lodash-es';
 import { nanoid } from '@reduxjs/toolkit';
 import getEditorConfig from '../../utils/getEditorConfig';
@@ -8,7 +8,7 @@ import getEditorConfig from '../../utils/getEditorConfig';
 interface EditorEvent {
   id: string;
   data?: string;
-  editor?: ClassicEditor | null;
+  editor?: BalloonEditor | null;
   evtName: string;
 }
 
@@ -37,7 +37,7 @@ export default function Editor({
 }: EditorProps) {
   const id = nanoid();
   const editorComp = useRef<HTMLDivElement | null>(null);
-  let editorInstance: ClassicEditor | null;
+  let editorInstance: BalloonEditor | null;
 
   const setUpEditorEvents = () => {
     if (editorInstance) {
@@ -79,8 +79,8 @@ export default function Editor({
     const editorConfig = getEditorConfig(initialEditorData, disabled);
 
     if (sEditorElem && editorConfig) {
-      ClassicEditor.create(sEditorElem, editorConfig)
-        .then((createdEditor: ClassicEditor) => {
+      BalloonEditor.create(sEditorElem, editorConfig)
+        .then((createdEditor: BalloonEditor) => {
           // eslint-disable-next-line react-hooks/exhaustive-deps
           editorInstance = createdEditor;
   
