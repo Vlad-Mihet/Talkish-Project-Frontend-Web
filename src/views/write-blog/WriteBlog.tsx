@@ -1,6 +1,7 @@
 import Editor from 'src/components/Editor/Editor';
 import Layout from 'src/layout/Layout';
 import styles from './write-blog.module.scss';
+
 interface EditorEvent {
   id: string;
   data?: string;
@@ -9,12 +10,11 @@ interface EditorEvent {
 }
 
 export default function WriteBlog(): JSX.Element {
-
   const handleInputDebounce = ({
     id,
     data,
     editor,
-    evtName
+    evtName,
   }: EditorEvent) => {
     console.log(id, data, editor, evtName);
   };
@@ -22,7 +22,7 @@ export default function WriteBlog(): JSX.Element {
   const handleFocus = ({
     id,
     editor,
-    evtName
+    evtName,
   }: EditorEvent) => {
     console.log(id, editor, evtName);
   };
@@ -30,7 +30,7 @@ export default function WriteBlog(): JSX.Element {
   const handleBlur = ({
     id,
     editor,
-    evtName
+    evtName,
   }: EditorEvent) => {
     console.log(id, editor, evtName);
   };
@@ -38,7 +38,7 @@ export default function WriteBlog(): JSX.Element {
   const handleEditorReady = ({
     id,
     editor,
-    evtName
+    evtName,
   }: EditorEvent) => {
     console.log(id, editor, evtName);
   };
@@ -46,7 +46,7 @@ export default function WriteBlog(): JSX.Element {
   const handleEditorError = ({
     id,
     editor,
-    evtName
+    evtName,
   }: EditorEvent) => {
     console.log(id, editor, evtName);
   };
@@ -54,7 +54,7 @@ export default function WriteBlog(): JSX.Element {
   const handleEditorUnmounted = ({
     id,
     editor,
-    evtName
+    evtName,
   }: EditorEvent) => {
     console.log(id, editor, evtName);
   };
@@ -72,5 +72,5 @@ export default function WriteBlog(): JSX.Element {
         />
       </div>
     </Layout>
-  )
+  );
 }

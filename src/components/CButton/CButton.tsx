@@ -1,8 +1,8 @@
+import { MouseEventHandler } from 'react';
 import styles from './cbutton.module.scss';
 import classLister from '../utils/classLister';
-import { MouseEventHandler } from 'react';
 
-  /*
+/*
     TODO:
       Add a way to add any event listener to the button
       such as it was done for the `onClick` event
@@ -16,7 +16,7 @@ interface Props {
   classes?: string[],
   block?: boolean,
   rounded?: boolean,
-  onClick?: MouseEventHandler<HTMLButtonElement> | undefined,
+  onClick?: MouseEventHandler<HTMLButtonElement>,
 }
 
 function CButton({
@@ -28,7 +28,7 @@ function CButton({
   filled = false,
   rounded = false,
   block = false,
-  onClick
+  onClick,
 }: Props): JSX.Element {
   const computedClasses: (string | boolean)[] = [
     'c-button',
@@ -49,14 +49,15 @@ function CButton({
 
   return (
     <button
-      className={classes.join(' ') + " " + componentClasses(...computedClasses as string[])}
+      className={`${classes.join(' ')} ${componentClasses(...computedClasses as string[])}`}
+      type="button"
       onClick={onClick}
     >
       <span className="btn-content">
         {children}
       </span>
     </button>
-  )
+  );
 }
 
-export default CButton
+export default CButton;

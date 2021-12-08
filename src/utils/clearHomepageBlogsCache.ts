@@ -1,6 +1,6 @@
 /**
  * clearHomepageBlogsCache
- * 
+ *
  * Clears the cached blogs data from the homepage every 15 minutes
  * after being invoked
  * @returns {NODEJS.Timer} - Homepage Blogs Caching Timer

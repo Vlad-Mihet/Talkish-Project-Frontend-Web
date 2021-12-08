@@ -1,3 +1,3 @@
-import BlogsContainer from "./BlogsContainer";
+import BlogsContainer from './BlogsContainer';
 
 export default BlogsContainer;

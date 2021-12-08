@@ -1,10 +1,10 @@
+import { useEffect } from 'react';
 import { Blog } from '../../../../components';
 import { Endpoints } from '../../../../config';
 import type { BlogWithAuthor as BlogType } from '../../../../types/models';
 import useFetchData from '../../../../hooks/useFetchData';
-import { useEffect } from 'react';
 
-const fetchAllBlogsUrl = Endpoints.ROOT + '/' + Endpoints.BLOGS;
+const fetchAllBlogsUrl = `${Endpoints.ROOT}/${Endpoints.BLOGS}`;
 
 export default function BlogsContainer() {
   const {
@@ -34,5 +34,5 @@ export default function BlogsContainer() {
         />
       ))}
     </div>
-  )
+  );
 }

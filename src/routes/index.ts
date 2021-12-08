@@ -6,7 +6,7 @@ export enum Paths {
   TOPIC = '/:topicId',
   ROOT = '/',
   PAGE_NOT_FOUND = '*',
-  WRITE_STORY = 'new-story'
+  WRITE_STORY = 'new-story',
 }
 
 export enum UsefulLinks {
@@ -15,5 +15,5 @@ export enum UsefulLinks {
   CAREERS = '/careers',
   PRIVACY = '/privacy',
   TERMS = '/terms',
-  WRITERS = '/writers'
+  WRITERS = '/writers',
 }

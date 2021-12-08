@@ -1,12 +1,12 @@
-import useFetchData from '../../hooks/useFetchData';
 import { useParams } from 'react-router-dom';
-import styles from './blog.module.scss'
-import { Endpoints } from '../../config'; 
+import useFetchData from '../../hooks/useFetchData';
+import styles from './blog.module.scss';
+import { Endpoints } from '../../config';
 
 export default function Blog(): JSX.Element {
   const { blogId } = useParams();
 
-  const fetchBlogByIdUrl = Endpoints.ROOT + '/' + Endpoints.BLOGS + '/' + blogId;
+  const fetchBlogByIdUrl = `${Endpoints.ROOT}/${Endpoints.BLOGS}/${blogId}`;
 
   const { data: blog, loading, error } = useFetchData(fetchBlogByIdUrl);
 
@@ -22,8 +22,7 @@ export default function Blog(): JSX.Element {
           <div>
             <h1>{blog.title}</h1>
           </div>
-        )
-      }
+        )}
     </div>
-  )
+  );
 }

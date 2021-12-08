@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react';
 import styles from './editor.module.scss';
 import BalloonEditor from '@ckeditor/ckeditor5-editor-balloon/src/ballooneditor';
 import { debounce } from 'lodash-es';
@@ -45,30 +45,36 @@ export default function Editor({
         if (editorInstance) {
           const data = editorInstance.getData();
 
-          handleInputDebounce && handleInputDebounce({
-            id,
-            data,
-            editor: editorInstance,
-            evtName: 'update:value',
-          });
+          if (handleInputDebounce) {
+            handleInputDebounce({
+              id,
+              data,
+              editor: editorInstance,
+              evtName: 'update:value',
+            });
+          }
         }
       }, debounceTime, { leading: true });
 
       editorInstance.model.document.on('change:data', emitDebouncedInputEvent);
       editorInstance.editing.view.document.on('focus', () => {
-        handleFocus && handleFocus({
-          id,
-          editor: editorInstance,
-          evtName: 'focus',
-        });
+        if (handleFocus) {
+          handleFocus({
+            id,
+            editor: editorInstance,
+            evtName: 'focus',
+          });
+        }
       });
 
       editorInstance.editing.view.document.on('blur', () => {
-        handleBlur && handleBlur({
-          evtName: 'blur',
-          id,
-          editor: editorInstance,
-        });
+        if (handleBlur) {
+          handleBlur({
+            evtName: 'blur',
+            id,
+            editor: editorInstance,
+          });
+        }
       });
     }
   };
@@ -81,24 +87,27 @@ export default function Editor({
     if (sEditorElem && editorConfig) {
       BalloonEditor.create(sEditorElem, editorConfig)
         .then((createdEditor: BalloonEditor) => {
-          // eslint-disable-next-line react-hooks/exhaustive-deps
           editorInstance = createdEditor;
-  
+
           setUpEditorEvents();
-          handleEditorReady && handleEditorReady({
-            evtName: 'ready',
-            id,
-            editor: editorInstance,
-          });
+          if (handleEditorReady) {
+            handleEditorReady({
+              evtName: 'ready',
+              id,
+              editor: editorInstance,
+            });
+          }
         })
         .catch((error: Error) => {
           console.error(error);
 
-          handleEditorError && handleEditorError({
-            evtName: 'error',
-            id,
-            editor: editorInstance,
-          });
+          if (handleEditorError) {
+            handleEditorError({
+              evtName: 'error',
+              id,
+              editor: editorInstance,
+            });
+          }
         });
     }
 
@@ -107,20 +116,22 @@ export default function Editor({
         editorInstance.destroy();
         editorInstance = null;
       }
-    
-      handleEditorUnmounted && handleEditorUnmounted({
-        evtName: 'unmount',
-        id,
-        editor: editorInstance,
-      })
+
+      if (handleEditorUnmounted) {
+        handleEditorUnmounted({
+          evtName: 'unmount',
+          id,
+          editor: editorInstance,
+        });
+      }
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-  
+  }, []);
+
   return (
     <div
       ref={editorComp}
       className={styles['editor-writer']}
     />
-  )
+  );
 }

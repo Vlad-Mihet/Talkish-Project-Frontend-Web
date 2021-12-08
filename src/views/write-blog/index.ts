@@ -1,3 +1,3 @@
-import WriteBlog from "./WriteBlog";
+import WriteBlog from './WriteBlog';
 
 export default WriteBlog;

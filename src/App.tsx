@@ -1,10 +1,10 @@
 import './assets/styles/main.scss';
-import { Paths } from './routes';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-} from "react-router-dom";
+} from 'react-router-dom';
+import { Paths } from './routes';
 
 import {
   Home,

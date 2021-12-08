@@ -1,4 +1,4 @@
-import styles from './sidebar.module.scss'
+import styles from './sidebar.module.scss';
 import { UsefulLinks } from '../../../routes';
 
 interface SidebarProps {
@@ -9,25 +9,30 @@ interface SidebarProps {
 
 const capitalizeString = (str: string) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 
-export default function Sidebar(props: SidebarProps): JSX.Element {
+export default function Sidebar({
+  topSection,
+  middleSection,
+  bottomSection,
+}: SidebarProps): JSX.Element {
   return (
     <div className={styles.sidebar}>
       <div className={styles['top-section']}>
-        {props.topSection}
+        {topSection}
       </div>
       <div className={styles['middle-section']}>
-        {props.middleSection}
+        {middleSection}
       </div>
       <div className={styles['bottom-section']}>
-        {props.bottomSection}
+        {bottomSection}
       </div>
       <div className={styles['useful-links-container']}>
         {Object.keys(UsefulLinks).map((routeName, index) => (
+          // eslint-disable-next-line react/no-array-index-key
           <p key={index}>
             {capitalizeString(routeName)}
           </p>
         ))}
       </div>
     </div>
-  )
+  );
 }

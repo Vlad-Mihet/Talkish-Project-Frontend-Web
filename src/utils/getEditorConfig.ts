@@ -16,12 +16,12 @@ import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
 
 /**
  * getEditorConfig.ts
- * 
+ *
  * Retrieves the editor configuration object
- * 
+ *
  * @returns - The Editor Config Object
  */
-function getEditorConfig(initialEditorData: string, _disabled: boolean): EditorConfigAlias {
+function getEditorConfig(initialEditorData: string): EditorConfigAlias {
   const editorConfig: EditorConfigAlias = {
     toolbar: [
       'bold',

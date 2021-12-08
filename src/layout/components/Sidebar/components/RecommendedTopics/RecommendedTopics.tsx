@@ -1,18 +1,17 @@
-import { Topic } from '../../../../../types/models';
-import styles from './recommendedTopics.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { Paths } from '../../../../../routes';
 import useFetchData from 'src/hooks/useFetchData';
 import { useEffect } from 'react';
 import { Endpoints } from 'src/config/endpoints';
+import { Paths } from '../../../../../routes';
+import styles from './recommendedTopics.module.scss';
+import { Topic } from '../../../../../types/models';
 
-const fetchAllTopicsUrl = Endpoints.ROOT + '/' + Endpoints.TOPICS;
+const fetchAllTopicsUrl = `${Endpoints.ROOT}/${Endpoints.TOPICS}`;
 
 export default function RecommendedTopics() {
   const navigateTo = useNavigate();
 
-  const navigateToTopic = (topicId: number): void =>
-    navigateTo(`${Paths.ROOT}/${Paths.TOPICS}/${topicId}`);
+  const navigateToTopic = (topicId: number): void => navigateTo(`${Paths.ROOT}/${Paths.TOPICS}/${topicId}`);
 
   const {
     data: topics,
@@ -24,8 +23,8 @@ export default function RecommendedTopics() {
     if (!loading && error) {
       console.error(`There was an issue: ${error}`);
     }
-  }, [loading, error])
-  
+  }, [loading, error]);
+
   return (
     <div className={styles.recommendedTopics}>
       <h4>Recommended Topics</h4>
@@ -49,5 +48,5 @@ export default function RecommendedTopics() {
         )
       )}
     </div>
-  )
+  );
 }
