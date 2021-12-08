@@ -5,10 +5,10 @@
  * @param styleObject
  * @returns {string} classesString
  */
-
 function classLister(styleObject: {
   readonly [key: string]: string;
-}) {
+}): (...classList: string[]) => string {
+  // eslint-disable-next-line function-paren-newline
   return (...classList: string[]): string => classList.reduce(
     // Reduce the list of string to a single className
     // Which will be stored in classesString which starts from ""

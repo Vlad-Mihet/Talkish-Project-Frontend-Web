@@ -14,7 +14,6 @@ interface EditorEvent {
 
 interface EditorProps {
   debounceTime?: number;
-  disabled?: boolean;
   initialEditorData?: string,
   handleInputDebounce?: (data: EditorEvent) => void;
   handleFocus?: (data: EditorEvent) => void;
@@ -26,7 +25,6 @@ interface EditorProps {
 
 export default function Editor({
   debounceTime = 350,
-  disabled = false,
   initialEditorData = '',
   handleInputDebounce,
   handleFocus,
@@ -82,7 +80,7 @@ export default function Editor({
   useEffect(() => {
     const sEditorElem: null | HTMLElement | string = editorComp.current;
 
-    const editorConfig = getEditorConfig(initialEditorData, disabled);
+    const editorConfig = getEditorConfig(initialEditorData);
 
     if (sEditorElem && editorConfig) {
       BalloonEditor.create(sEditorElem, editorConfig)
@@ -135,3 +133,14 @@ export default function Editor({
     />
   );
 }
+
+Editor.defaultProps = {
+  debounceTime: 350,
+  initialEditorData: '',
+  handleInputDebounce: undefined,
+  handleFocus: undefined,
+  handleBlur: undefined,
+  handleEditorReady: undefined,
+  handleEditorError: undefined,
+  handleEditorUnmounted: undefined,
+};

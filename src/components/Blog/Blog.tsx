@@ -5,6 +5,7 @@ import styles from './blog.module.scss';
 import { Paths } from '../../routes';
 
 type BlogProps = Omit<BlogType, 'author'> & {
+  // eslint-disable-next-line react/no-unused-prop-types
   authorId: number;
   authorName: string;
 };

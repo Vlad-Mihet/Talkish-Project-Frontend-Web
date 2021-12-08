@@ -23,17 +23,17 @@ function CButton({
   // Define default props here
   children,
   classes = [],
-  color = 'green',
-  size = 'm',
-  filled = false,
-  rounded = false,
-  block = false,
+  color,
+  size,
+  filled,
+  rounded,
+  block,
   onClick,
 }: Props): JSX.Element {
   const computedClasses: (string | boolean)[] = [
     'c-button',
-    rounded && 'rounded',
-    block && 'block',
+    !!rounded && 'rounded',
+    !!block && 'block',
     color === 'green' && 'green',
     color === 'grey' && 'grey',
     size === 'xs' && 'extra-small',
@@ -42,7 +42,7 @@ function CButton({
     size === 'l' && 'large',
     size === 'xl' && 'extra-large',
     !filled && 'transparent',
-    filled && 'filled',
+    !!filled && 'filled',
   ];
 
   const componentClasses: (...classList: string[]) => string = classLister(styles);
@@ -59,5 +59,15 @@ function CButton({
     </button>
   );
 }
+
+CButton.defaultProps = {
+  color: 'green',
+  size: 'm',
+  filled: false,
+  rounded: false,
+  block: false,
+  classes: [],
+  onClick: null,
+};
 
 export default CButton;

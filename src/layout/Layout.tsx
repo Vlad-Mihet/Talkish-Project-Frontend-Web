@@ -22,3 +22,7 @@ export default function Layout({
     </div>
   );
 }
+
+Layout.defaultProps = {
+  sidebar: null,
+};

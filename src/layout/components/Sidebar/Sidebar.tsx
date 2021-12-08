@@ -36,3 +36,9 @@ export default function Sidebar({
     </div>
   );
 }
+
+Sidebar.defaultProps = {
+  topSection: null,
+  middleSection: null,
+  bottomSection: null,
+};
