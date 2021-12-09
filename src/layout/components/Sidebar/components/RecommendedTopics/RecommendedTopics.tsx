@@ -28,24 +28,26 @@ export default function RecommendedTopics() {
   return (
     <div className={styles.recommendedTopics}>
       <h4>Recommended Topics</h4>
-      {loading ? (
+      {!!loading && (
         <p>Loading Data...</p>
+      )}
+      {topics && !error ? (
+        <div className={styles.topics}>
+          {topics.map(({ topicId, topicName }: Topic) => (
+            <span
+              key={topicId}
+              tabIndex={topicId}
+              role="button"
+              className={styles.topic}
+              onClick={() => navigateToTopic(topicId)}
+              onKeyDown={() => navigateToTopic(topicId)}
+            >
+              {topicName}
+            </span>
+          ))}
+        </div>
       ) : (
-        topics && !error ? (
-          <div className={styles.topics}>
-            {topics.map((topic: Topic) => (
-              <span
-                key={topic.topicId}
-                className={styles.topic}
-                onClick={() => navigateToTopic(topic.topicId)}
-              >
-                {topic.topicName}
-              </span>
-            ))}
-          </div>
-        ) : (
-          <p>There was an error loading the data.</p>
-        )
+        <p>There was an error loading the data.</p>
       )}
     </div>
   );

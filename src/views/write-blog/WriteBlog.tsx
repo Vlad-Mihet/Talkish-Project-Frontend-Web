@@ -10,31 +10,6 @@ interface EditorEvent {
 }
 
 export default function WriteBlog(): JSX.Element {
-  const handleInputDebounce = ({
-    id,
-    data,
-    editor,
-    evtName,
-  }: EditorEvent) => {
-    console.log(id, data, editor, evtName);
-  };
-
-  const handleFocus = ({
-    id,
-    editor,
-    evtName,
-  }: EditorEvent) => {
-    console.log(id, editor, evtName);
-  };
-
-  const handleBlur = ({
-    id,
-    editor,
-    evtName,
-  }: EditorEvent) => {
-    console.log(id, editor, evtName);
-  };
-
   const handleEditorReady = ({
     id,
     editor,
@@ -63,9 +38,6 @@ export default function WriteBlog(): JSX.Element {
     <Layout>
       <div className={styles['write-blog']}>
         <Editor
-          handleInputDebounce={handleInputDebounce}
-          handleFocus={handleFocus}
-          handleBlur={handleBlur}
           handleEditorReady={handleEditorReady}
           handleEditorError={handleEditorError}
           handleEditorUnmounted={handleEditorUnmounted}
