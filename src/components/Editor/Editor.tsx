@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import styles from './editor.module.scss';
 import BalloonEditor from '@ckeditor/ckeditor5-editor-balloon/src/ballooneditor';
-import { debounce } from 'lodash-es';
 import { nanoid } from '@reduxjs/toolkit';
 import getEditorConfig from '../../utils/getEditorConfig';
 
@@ -13,22 +12,14 @@ interface EditorEvent {
 }
 
 interface EditorProps {
-  debounceTime?: number;
   initialEditorData?: string,
-  handleInputDebounce?: (data: EditorEvent) => void;
-  handleFocus?: (data: EditorEvent) => void;
-  handleBlur?: (data: EditorEvent) => void;
   handleEditorReady?: (data: EditorEvent) => void;
   handleEditorError?: (data: EditorEvent) => void;
   handleEditorUnmounted?: (data: EditorEvent) => void;
 }
 
 export default function Editor({
-  debounceTime = 350,
   initialEditorData = '',
-  handleInputDebounce,
-  handleFocus,
-  handleBlur,
   handleEditorReady,
   handleEditorError,
   handleEditorUnmounted,
@@ -36,46 +27,6 @@ export default function Editor({
   const id = nanoid();
   const editorComp = useRef<HTMLDivElement | null>(null);
   let editorInstance: BalloonEditor | null;
-
-  const setUpEditorEvents = () => {
-    if (editorInstance) {
-      const emitDebouncedInputEvent = debounce(() => {
-        if (editorInstance) {
-          const data = editorInstance.getData();
-
-          if (handleInputDebounce) {
-            handleInputDebounce({
-              id,
-              data,
-              editor: editorInstance,
-              evtName: 'update:value',
-            });
-          }
-        }
-      }, debounceTime, { leading: true });
-
-      editorInstance.model.document.on('change:data', emitDebouncedInputEvent);
-      editorInstance.editing.view.document.on('focus', () => {
-        if (handleFocus) {
-          handleFocus({
-            id,
-            editor: editorInstance,
-            evtName: 'focus',
-          });
-        }
-      });
-
-      editorInstance.editing.view.document.on('blur', () => {
-        if (handleBlur) {
-          handleBlur({
-            evtName: 'blur',
-            id,
-            editor: editorInstance,
-          });
-        }
-      });
-    }
-  };
 
   useEffect(() => {
     const sEditorElem: null | HTMLElement | string = editorComp.current;
@@ -87,7 +38,6 @@ export default function Editor({
         .then((createdEditor: BalloonEditor) => {
           editorInstance = createdEditor;
 
-          setUpEditorEvents();
           if (handleEditorReady) {
             handleEditorReady({
               evtName: 'ready',
@@ -135,11 +85,7 @@ export default function Editor({
 }
 
 Editor.defaultProps = {
-  debounceTime: 350,
   initialEditorData: '',
-  handleInputDebounce: undefined,
-  handleFocus: undefined,
-  handleBlur: undefined,
   handleEditorReady: undefined,
   handleEditorError: undefined,
   handleEditorUnmounted: undefined,
