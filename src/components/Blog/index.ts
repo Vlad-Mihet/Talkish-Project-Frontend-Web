@@ -1,3 +1,3 @@
-import { default as Blog } from './Blog';
+import Blog from './Blog';
 
 export default Blog;

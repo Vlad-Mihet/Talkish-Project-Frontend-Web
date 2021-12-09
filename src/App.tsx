@@ -1,33 +1,24 @@
-import { useEffect } from 'react';
-import clearHomepageBlogsCache from './utils/clearHomepageBlogsCache';
 import './assets/styles/main.scss';
-import { Paths } from './routes';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-} from "react-router-dom";
+} from 'react-router-dom';
+import { Paths } from './routes';
 
 import {
   Home,
   Blog,
+  WriteStory,
 } from './views';
 
-function App() {
-  useEffect(() => {
-    const timer = clearHomepageBlogsCache();
-
-    // Clear timer on unmount
-    return () => {
-      clearInterval(timer);
-    }
-  }, []);
-
+function App(): JSX.Element {
   return (
     <Router>
       <Routes>
         <Route path={Paths.ROOT} element={<Home />} />
         <Route path={Paths.BLOG} element={<Blog />} />
+        <Route path={Paths.WRITE_STORY} element={<WriteStory />} />
       </Routes>
     </Router>
   );

@@ -4,29 +4,29 @@ import Sidebar from '../../layout/components/Sidebar';
 import {
   RecommendedTopics, RecommendedAuthors,
 } from '../../layout/components';
-import { BlogsContainer } from './components'
+import { BlogsContainer } from './components';
 
 export default function Home(): JSX.Element {
   return (
     <Layout
-      sidebar={
+      sidebar={(
         <Sidebar
-          topSection={
+          topSection={(
             <Suspense fallback={<p>Loading Data...</p>}>
               <RecommendedTopics />
             </Suspense>
-          }
-          middleSection={
+          )}
+          middleSection={(
             <Suspense fallback={<p>Loading Data...</p>}>
               <RecommendedAuthors />
             </Suspense>
-          }
+          )}
         />
-      }
+      )}
     >
       <Suspense fallback={<p>Loading Data...</p>}>
         <BlogsContainer />
       </Suspense>
     </Layout>
-  )
+  );
 }

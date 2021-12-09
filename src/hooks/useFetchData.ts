@@ -9,11 +9,11 @@ interface StateType {
   loading: boolean;
   data: any;
   error: Error | AxiosError | null;
-};
+}
 
 function useFetchData(
   url: string,
-  requestConfig?: AxiosRequestConfig
+  requestConfig?: AxiosRequestConfig,
 ): StateType {
   const [state, setState] = useState<StateType>({
     loading: true,
@@ -38,7 +38,7 @@ function useFetchData(
           loading: false,
         });
       });
-      // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   return state;

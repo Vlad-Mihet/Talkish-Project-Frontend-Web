@@ -1,5 +1,5 @@
-import styles from './topicDataShowcase.module.scss'
-import prettifyStoryStatNum from './utils/prettifyStoryStatNum'
+import styles from './topicDataShowcase.module.scss';
+import prettifyStoryStatNum from './utils/prettifyStoryStatNum';
 
 interface TopicDataShowcaseProps {
   numberOfStories: number;
@@ -8,7 +8,7 @@ interface TopicDataShowcaseProps {
 
 export default function TopicDataShowcase({
   numberOfStories,
-  numberOfAuthors
+  numberOfAuthors,
 }: TopicDataShowcaseProps) {
   return (
     <div className={styles['stats-container']}>
@@ -21,5 +21,5 @@ export default function TopicDataShowcase({
         <span>{prettifyStoryStatNum(numberOfAuthors)}</span>
       </div>
     </div>
-  )
+  );
 }

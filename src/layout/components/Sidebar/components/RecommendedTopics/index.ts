@@ -1,3 +1,3 @@
-import RecommendedTopics from "./RecommendedTopics";
+import RecommendedTopics from './RecommendedTopics';
 
 export default RecommendedTopics;
