@@ -33,7 +33,7 @@ export default function RecommendedTopics() {
       )}
       {topics && !error ? (
         <div className={styles.topics}>
-          {topics.map(({ topicId, topicName }: Topic) => (
+          {topics.payload.map(({ topicId, topicName }: Topic) => (
             <span
               key={topicId}
               tabIndex={topicId}

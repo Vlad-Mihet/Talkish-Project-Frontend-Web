@@ -21,7 +21,7 @@ export default function BlogsContainer() {
 
   return (
     <div>
-      {blogs && blogs.map((blog: BlogType) => (
+      {blogs && blogs.payload.map((blog: BlogType) => (
         <Blog
           key={blog.blogId}
           blogId={blog.blogId}

@@ -28,7 +28,7 @@ export default function RecommendedAuthors() {
       )}
       {authors && !error ? (
         <div className={styles.authors}>
-          {authors.map((author: Author) => (
+          {authors.payload.map((author: Author) => (
             <div
               key={author.authorId}
               className={styles.authorCard}
