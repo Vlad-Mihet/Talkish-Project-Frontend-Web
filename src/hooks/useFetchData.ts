@@ -24,10 +24,10 @@ function useFetchData(
   useEffect(() => {
     axios.get(url, requestConfig)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         setState({
           ...state,
-          data: res.data,
+          data: res.data.payload,
           loading: false,
         });
       })

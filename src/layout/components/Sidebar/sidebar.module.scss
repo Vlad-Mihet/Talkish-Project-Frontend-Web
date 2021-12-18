@@ -1,5 +1,5 @@
 .sidebar {
-  width: calc(80vw / 3);
+  flex: calc(80vw / 3);
   display: flex;
   flex-direction: column;
   align-items: flex-start;

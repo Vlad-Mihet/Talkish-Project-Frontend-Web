@@ -20,6 +20,8 @@ export default function RecommendedTopics() {
   } = useFetchData(fetchAllTopicsUrl);
 
   useEffect(() => {
+    console.log(topics);
+
     if (!loading && error) {
       console.error(`There was an issue: ${error}`);
     }
