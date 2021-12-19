@@ -14,6 +14,7 @@ export interface Author {
   authorId: number;
   firstName: string;
   lastName: string;
+  email: string;
   /* Will also receive email & bio */
 }
 
@@ -37,4 +38,10 @@ export interface Blog {
 export interface Topic {
   topicId: number;
   topicName: string;
+}
+
+export interface Publication {
+  publicationId: number;
+  name: string;
+  owner: Author;
 }
