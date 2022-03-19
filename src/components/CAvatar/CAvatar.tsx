@@ -33,7 +33,7 @@ function CAvatar({
         />
       )
       : (
-        <div className={styles.avatar}>
+        <div className={`${styles.avatar} ${styles[AVATAR_SIZES[size]]}`}>
           <span>{userFirstName.charAt(0).toUpperCase()}</span>
           <span>{userLastName.charAt(0).toUpperCase()}</span>
         </div>
