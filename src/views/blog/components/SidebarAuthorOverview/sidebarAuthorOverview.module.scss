@@ -1,0 +1,29 @@
+.author-overview {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1.25rem 0 1.75rem;
+
+    .author-name {
+      font-size: 1.1rem;
+      color: #0f0f0f;
+      font-weight: 600;
+    }
+
+    .author-followers-count {
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .author-bio {
+      font-size: 0.9rem;
+      color: #333;
+    }
+  }
+}

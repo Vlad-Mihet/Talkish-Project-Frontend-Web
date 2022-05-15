@@ -19,12 +19,12 @@ module.exports = {
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
     'import/order': 'off',
-    'react/function-component-definition': [
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": [
       2,
       {
-        namedComponents: 'function-declaration',
+        namedComponents: "function-declaration",
       },
     ],
-    "import/prefer-default-export": "off",
   }
 }

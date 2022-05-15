@@ -13,6 +13,8 @@ import TablePlugin from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties';
 import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
+import BlockToolbar from '@ckeditor/ckeditor5-ui/src/toolbar/block/blocktoolbar';
+import Link from '@ckeditor/ckeditor5-link/src/link';
 
 /**
  * getEditorConfig.ts
@@ -23,19 +25,21 @@ import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
  */
 function getEditorConfig(initialEditorData: string): EditorConfigAlias {
   const editorConfig: EditorConfigAlias = {
-    toolbar: [
+    blockToolbar: [
+      'heading',
+      '|',
+      'paragraph',
+      'link',
+    ],
+    balloonToolbar: [
       'bold',
       'italic',
-      '|',
-      'highlight:greenMarker',
-      'removeHighlight',
+      'heading1',
+      'heading2',
+      'heading3',
       '|',
       'bulletedList',
       'numberedList',
-      'removeFormat',
-      '|',
-      'undo',
-      'redo',
     ],
     language: 'en',
     highlight: {
@@ -61,6 +65,8 @@ function getEditorConfig(initialEditorData: string): EditorConfigAlias {
       TableToolbar,
       TableCellProperties,
       TableProperties,
+      BlockToolbar,
+      Link,
     ],
   };
 

@@ -1,0 +1,20 @@
+.blog {
+  overflow-y: auto;
+  height: fit-content;
+  position: relative;
+  margin-top: 5vh;
+
+  .blog-content-wrapper {
+    margin: 0 10vw;
+
+    .blog-title {
+      margin-bottom: 2.5vh;
+    }
+
+    .blog-content {
+      &.is-toolbar-floating {
+        padding-bottom: 60px;
+      }
+    }
+  }
+}

@@ -1,4 +1,12 @@
 .write-blog {
-  width: 100%;
+  width: 100vw;
   height: 100%;
+  position: relative;
+  box-sizing: border-box;
+  margin: 0 10%;
+  padding-top: 15vh;
+
+  .editor-container {
+    width: 80%;
+  }
 }

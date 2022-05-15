@@ -11,7 +11,7 @@ const fetchAllTopicsUrl = `${Endpoints.ROOT}/${Endpoints.TOPICS}`;
 export default function RecommendedTopics() {
   const navigateTo = useNavigate();
 
-  const navigateToTopic = (topicId: number): void => navigateTo(`${Paths.ROOT}/${Paths.TOPICS}/${topicId}`);
+  const navigateToTopic = (topicId: number): void => navigateTo(`${Paths.BLOGS}?topic=${topicId}`);
 
   const {
     data: topics,

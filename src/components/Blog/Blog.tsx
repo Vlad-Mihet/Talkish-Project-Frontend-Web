@@ -36,6 +36,7 @@ export default function Blog(props: BlogProps): JSX.Element {
         tabIndex={0}
         onClick={handleViewBlog}
         onKeyDown={handleViewBlog}
+        className={styles['blog__content-info']}
       >
         <h2>{title}</h2>
         <h3>{getBlogContentPreview(content)}</h3>

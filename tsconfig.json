@@ -87,6 +87,16 @@
     /* Advanced Options */
     // "skipLibCheck": true,                  /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
-    "exactOptionalPropertyTypes": false /* Optional property types should be interpreted exactly as written; see PR https://github.com/microsoft/TypeScript/pull/43947 */
-  }
+    "exactOptionalPropertyTypes": false /* Optional property types should be interpreted exactly as written; see PR https://github.com/microsoft/TypeScript/pull/43947 */,
+  },
+  "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    ".eslintrc.js",
+    "config"
+  ],
 }

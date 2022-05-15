@@ -17,7 +17,9 @@ function App(): JSX.Element {
     <Router>
       <Routes>
         <Route path={Paths.ROOT} element={<Home />} />
-        <Route path={Paths.BLOG} element={<Blog />} />
+        <Route path={Paths.BLOGS}>
+          <Route path={Paths.BLOG} element={<Blog />} />
+        </Route>
         <Route path={Paths.WRITE_STORY} element={<WriteStory />} />
       </Routes>
     </Router>

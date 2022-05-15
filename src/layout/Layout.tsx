@@ -11,7 +11,7 @@ export default function Layout({
   sidebar,
 }: LayoutProps) {
   return (
-    <div className={styles.layout}>
+    <div className={`${styles.layout} ${sidebar && styles['has-sidebar']}`}>
       <Navbar />
       <div className={styles.main}>
         <div className={styles['main-content']}>
