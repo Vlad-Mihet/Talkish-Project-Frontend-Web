@@ -2,8 +2,8 @@
   border-radius: 50%;
 
   &.extra-small {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
   }
 
   &.small {
@@ -12,18 +12,18 @@
   }
 
   &.medium {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
   }
 
   &.large {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
 
   &.extra-large {
-    width: 85px;
-    height: 85px;
+    width: 70px;
+    height: 70px;
   }
 
   @at-root {

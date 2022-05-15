@@ -3,6 +3,7 @@ import { Blog } from '../../../../components';
 import { Endpoints } from '../../../../config';
 import type { BlogWithAuthor as BlogType } from '../../../../types/models';
 import useFetchData from '../../../../hooks/useFetchData';
+import styles from './blogsContainer.module.scss';
 
 const fetchAllBlogsUrl = `${Endpoints.ROOT}/${Endpoints.BLOGS}`;
 
@@ -20,7 +21,7 @@ export default function BlogsContainer() {
   }, [blogsLoading, blogsError]);
 
   return (
-    <div>
+    <div className={styles['blogs-container']}>
       {blogs && blogs.map((blog: BlogType) => (
         <Blog
           key={blog.blogId}

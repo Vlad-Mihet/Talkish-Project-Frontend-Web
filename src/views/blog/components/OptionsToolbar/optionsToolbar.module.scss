@@ -1,0 +1,19 @@
+.options-toolbar {
+  width: 100%;
+  margin-top: 1.75rem;
+  box-sizing: border-box;
+  padding: 0 10vw;
+  height: 60px;
+  position: relative;
+  border-top-color: transparent;
+  background-color: #fff;
+  transition: border-top-color 0.5s ease-in-out;
+
+  &.is-floating {
+    border-top: 1px solid #e6e6e6;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: calc(100vw - 80vw / 3 - 16.5px);;
+  }
+}

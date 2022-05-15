@@ -11,6 +11,11 @@
   .navbar__logo {
     h2 {
       margin: 0;
+
+      a {
+        color: unset;
+        text-decoration: none;
+      }
     }
   }
 

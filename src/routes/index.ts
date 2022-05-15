@@ -1,6 +1,6 @@
 export enum Paths {
   BLOGS = 'blogs',
-  BLOG = '/:blogId',
+  BLOG = '/blogs/:blogId',
   AUTHOR = '/:authorId',
   TOPICS = 'topics',
   TOPIC = '/:topicId',

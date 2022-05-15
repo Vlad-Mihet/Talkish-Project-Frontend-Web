@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faBell, faBookmark } from '@fortawesome/free-regular-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Paths } from '../../../routes';
 import { CButton } from '../../../components';
 import styles from './navbar.module.scss';
@@ -20,7 +20,11 @@ export default function Navbar() {
     <div className={styles.navbar}>
       <div className={styles['navbar__inline-container']}>
         <div className={styles.navbar__logo}>
-          <h2>Talkish</h2>
+          <h2 title="Go home">
+            <Link to={ROOT}>
+              Talkish
+            </Link>
+          </h2>
         </div>
         <div className={styles['right-options-wrapper']}>
           <FontAwesomeIcon

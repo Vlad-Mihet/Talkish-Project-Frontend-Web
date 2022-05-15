@@ -1,0 +1,43 @@
+.author-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0.5rem 0;
+  height: calc(50px + 1rem);
+  margin: 0 10vw 1.75rem;
+
+  .info-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-left: .75rem;
+
+    .author-name {
+      font-size: 0.95rem;
+      color: #0f0f0f;
+    }
+
+    .blog-info {
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: #6f6f6f;
+
+
+      .delimiter {
+        position: relative;
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background-color: #333;
+        border-radius: 50%;
+        margin: 0 .75rem;
+      }
+    }
+  }
+}
