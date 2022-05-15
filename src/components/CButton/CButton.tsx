@@ -17,6 +17,8 @@ interface Props {
   block?: boolean,
   rounded?: boolean,
   onClick?: MouseEventHandler<HTMLButtonElement>,
+  // eslint-disable-next-line react/require-default-props
+  type: 'button' | 'submit' | 'reset',
 }
 
 function CButton({
@@ -29,6 +31,7 @@ function CButton({
   rounded,
   block,
   onClick,
+  type,
 }: Props): JSX.Element {
   const computedClasses: (string | boolean)[] = [
     'c-button',
@@ -50,7 +53,8 @@ function CButton({
   return (
     <button
       className={`${classes.join(' ')} ${componentClasses(...computedClasses as string[])}`}
-      type="button"
+      // eslint-disable-next-line react/button-has-type
+      type={type}
       onClick={onClick}
     >
       <span className="btn-content">
@@ -68,6 +72,8 @@ CButton.defaultProps = {
   block: false,
   classes: [],
   onClick: null,
+  // eslint-disable-next-line react/default-props-match-prop-types
+  type: 'button',
 };
 
 export default CButton;

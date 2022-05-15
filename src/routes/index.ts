@@ -7,6 +7,8 @@ export enum Paths {
   ROOT = '/',
   PAGE_NOT_FOUND = '*',
   WRITE_STORY = 'new-story',
+  AUTH = 'auth',
+  LOGIN = 'login',
 }
 
 export enum UsefulLinks {

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import useFetchData from '../../hooks/useFetchData';
+import useFetchData from '../../hooks/useAxiosRequest';
 import styles from './blog.module.scss';
 import { Endpoints } from '../../config';
 import Layout from '../../layout/Layout';

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Blog } from '../../../../components';
 import { Endpoints } from '../../../../config';
 import type { BlogWithAuthor as BlogType } from '../../../../types/models';
-import useFetchData from '../../../../hooks/useFetchData';
+import useFetchData from '../../../../hooks/useAxiosRequest';
 import styles from './blogsContainer.module.scss';
 
 const fetchAllBlogsUrl = `${Endpoints.ROOT}/${Endpoints.BLOGS}`;

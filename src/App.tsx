@@ -11,6 +11,7 @@ import {
   Blog,
   WriteStory,
 } from './views';
+import Login from './views/login';
 
 function App(): JSX.Element {
   return (
@@ -21,6 +22,9 @@ function App(): JSX.Element {
           <Route path={Paths.BLOG} element={<Blog />} />
         </Route>
         <Route path={Paths.WRITE_STORY} element={<WriteStory />} />
+        <Route path={Paths.AUTH}>
+          <Route path={Paths.LOGIN} element={<Login />} />
+        </Route>
       </Routes>
     </Router>
   );

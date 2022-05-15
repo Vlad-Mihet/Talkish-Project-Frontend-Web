@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import useFetchData from 'src/hooks/useFetchData';
+import useFetchData from 'src/hooks/useAxiosRequest';
 import { useEffect } from 'react';
 import { Endpoints } from 'src/config/endpoints';
 import { Paths } from '../../../routes';
