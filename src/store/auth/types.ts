@@ -4,3 +4,8 @@ export type AuthUser = {
   lastName: string;
   email: string;
 };
+
+export type LoginCredentials = {
+  email: string;
+  password: string;
+};
