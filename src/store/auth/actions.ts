@@ -6,11 +6,15 @@ import retrieveFromLocalStorage from 'src/utils/retrieveFromLocalStorage';
 import removeFromLocalStorage from 'src/utils/removeFromLocalStorage';
 
 import type { TDispatch } from '..';
-import type { LoginCredentials } from './types';
+import type { LoginCredentials, RegisterCredentials } from './types';
 
-const { ROOT, AUTH, LOGIN } = Endpoints;
+const {
+  ROOT, AUTH, LOGIN, REGISTER,
+} = Endpoints;
 
 const loginEndpointUrl = `${ROOT}/${AUTH}/${LOGIN}`;
+
+const registerEndpointUrl = `${ROOT}/${AUTH}/${REGISTER}`;
 
 export const login = (authData: LoginCredentials) => async (dispatch: TDispatch) => {
   dispatch({
@@ -50,6 +54,36 @@ export const login = (authData: LoginCredentials) => async (dispatch: TDispatch)
         },
       });
     }
+  }
+};
+
+export const register = (registerData: RegisterCredentials) => async (dispatch: TDispatch) => {
+  dispatch({
+    type: AuthActions.REGISTER_REQUEST,
+  });
+
+  try {
+    const response = await axios.post(registerEndpointUrl, registerData);
+
+    const jwtToken = response.data.payload;
+
+    if (!jwtToken) throw new Error('Couldn\'t retrieve JWT');
+
+    setToLocalStorage(JWT_TOKEN_KEY, jwtToken);
+
+    dispatch({
+      type: AuthActions.REGISTER_SUCCESS,
+      payload: {
+        jwtToken,
+      },
+    });
+  } catch (err) {
+    dispatch({
+      type: AuthActions.REGISTER_FAILURE,
+      payload: {
+        error: err,
+      },
+    });
   }
 };
 

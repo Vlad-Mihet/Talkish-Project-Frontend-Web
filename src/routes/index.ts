@@ -9,6 +9,7 @@ export enum Paths {
   WRITE_STORY = 'new-story',
   AUTH = 'auth',
   LOGIN = 'login',
+  REGISTER = 'register',
 }
 
 export enum UsefulLinks {

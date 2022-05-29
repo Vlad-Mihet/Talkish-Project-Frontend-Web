@@ -14,6 +14,7 @@ import {
 import Login from './views/login';
 import { Navigate, useLocation } from 'react-router';
 import isAuthenticated from './utils/isAuthenticated';
+import Register from './views/register';
 
 function AuthRequiredRoute({ children }: { children: JSX.Element }): JSX.Element {
   const location = useLocation();
@@ -46,6 +47,7 @@ function App(): JSX.Element {
         />
         <Route path={Paths.AUTH}>
           <Route path={Paths.LOGIN} element={<Login />} />
+          <Route path={Paths.REGISTER} element={<Register />} />
         </Route>
       </Routes>
     </Router>

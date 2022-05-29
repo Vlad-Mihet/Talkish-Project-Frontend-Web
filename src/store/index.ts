@@ -1,13 +1,17 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { reducer as authReducer } from './auth/reducer';
+import {
+  loginReducer,
+  registrationReducer,
+} from './auth/reducer';
 import thunk from 'redux-thunk';
 
 import type { AnyAction } from 'redux';
 import type { ThunkDispatch } from 'redux-thunk';
 
 const rootReducer = combineReducers({
-  auth: authReducer,
+  login: loginReducer,
+  registration: registrationReducer,
 });
 
 export type TAppState = ReturnType<typeof rootReducer>;

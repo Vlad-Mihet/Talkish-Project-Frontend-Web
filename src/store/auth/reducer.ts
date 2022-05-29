@@ -1,13 +1,19 @@
 import { AuthActions } from './constants';
 
-const initialState = {
+const loginInitialState = {
   loading: false,
   token: null,
   error: null,
 };
 
-// eslint-disable-next-line @typescript-eslint/default-param-last, consistent-return
-export const reducer = (state = initialState, action: any): void | any => {
+const registrationInitialState = {
+  loading: false,
+  token: null,
+  error: null,
+};
+
+// eslint-disable-next-line @typescript-eslint/default-param-last
+export const loginReducer = (state = loginInitialState, action: any): void | any => {
   switch (action.type) {
     case AuthActions.LOGIN_REQUEST:
       return {
@@ -22,6 +28,32 @@ export const reducer = (state = initialState, action: any): void | any => {
         token: action.payload.token,
       };
     case AuthActions.LOGIN_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
+    default:
+      return state;
+  }
+};
+
+// eslint-disable-next-line @typescript-eslint/default-param-last
+export const registrationReducer = (state = registrationInitialState, action: any): void | any => {
+  switch (action.type) {
+    case AuthActions.REGISTER_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case AuthActions.REGISTER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        token: action.payload.token,
+      };
+    case AuthActions.REGISTER_FAILURE:
       return {
         ...state,
         loading: false,

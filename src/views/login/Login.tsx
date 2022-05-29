@@ -9,7 +9,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const storeAuthState = useSelector((state: TAppState) => state.auth);
+  const storeAuthState = useSelector((state: TAppState) => state.login);
 
   const dispatch = useDispatch();
 
@@ -25,8 +25,6 @@ function Login() {
       email,
       password,
     }));
-
-    resetFormData();
   };
 
   useEffect(() => () => {
