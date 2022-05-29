@@ -25,7 +25,7 @@ export const loginReducer = (state = loginInitialState, action: any): void | any
       return {
         ...state,
         loading: false,
-        token: action.payload.token,
+        token: action.payload.jwtToken,
       };
     case AuthActions.LOGIN_FAILURE:
       return {
@@ -51,7 +51,7 @@ export const registrationReducer = (state = registrationInitialState, action: an
       return {
         ...state,
         loading: false,
-        token: action.payload.token,
+        token: action.payload.jwtToken,
       };
     case AuthActions.REGISTER_FAILURE:
       return {
