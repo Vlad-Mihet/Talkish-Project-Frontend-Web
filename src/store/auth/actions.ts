@@ -1,17 +1,22 @@
 import { Endpoints } from 'src/config';
 import axios from 'axios';
 import { AuthActions, JWT_TOKEN_KEY } from './constants';
-import type { TDispatch } from '..';
-import type { LoginCredentials } from './types';
 import setToLocalStorage from 'src/utils/setToLocalStorage';
 import retrieveFromLocalStorage from 'src/utils/retrieveFromLocalStorage';
 import removeFromLocalStorage from 'src/utils/removeFromLocalStorage';
+
+import type { TDispatch } from '..';
+import type { LoginCredentials } from './types';
 
 const { ROOT, AUTH, LOGIN } = Endpoints;
 
 const loginEndpointUrl = `${ROOT}/${AUTH}/${LOGIN}`;
 
 export const login = (authData: LoginCredentials) => async (dispatch: TDispatch) => {
+  dispatch({
+    type: AuthActions.LOGIN_REQUEST,
+  });
+
   const existingJwtToken = retrieveFromLocalStorage(JWT_TOKEN_KEY);
 
   if (existingJwtToken) {
@@ -22,14 +27,12 @@ export const login = (authData: LoginCredentials) => async (dispatch: TDispatch)
       },
     });
   } else {
-    dispatch({
-      type: AuthActions.LOGIN_REQUEST,
-    });
-
     try {
       const response = await axios.post(loginEndpointUrl, authData);
 
-      const jwtToken = response.data.data.token;
+      const jwtToken = response.data.payload;
+
+      if (!jwtToken) throw new Error('Couldn\'t retrieve JWT');
 
       setToLocalStorage(JWT_TOKEN_KEY, jwtToken);
 
