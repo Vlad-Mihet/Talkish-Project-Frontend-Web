@@ -1,38 +1,38 @@
 import { CButton } from 'src/components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './login.module.scss';
-import type { AxiosRequestConfig } from 'axios';
-import { Endpoints } from 'src/config';
-import axios from 'axios';
-
-const submitLoginDataURI = `${Endpoints.ROOT}/${Endpoints.AUTH}/${Endpoints.LOGIN}`;
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from 'src/store/auth/actions';
+import type { TAppState } from 'src/store';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLoginFormSubmission = async (e: React.FormEvent<HTMLFormElement>) => {
+  const storeAuthState = useSelector((state: TAppState) => state.auth);
+
+  const dispatch = useDispatch();
+
+  const resetFormData = (): void => {
+    setEmail('');
+    setPassword('');
+  };
+
+  const handleLoginFormSubmission = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    const axiosRequest: AxiosRequestConfig = {
-      url: submitLoginDataURI,
-      method: 'POST',
-      data: {
-        email,
-        password,
-      },
-    };
+    dispatch(login({
+      email,
+      password,
+    }));
 
-    try {
-      await axios(axiosRequest);
-
-      // eslint-disable-next-line no-alert
-      alert('Login successful!');
-    } catch (err: any) {
-      // eslint-disable-next-line no-alert
-      alert(err.response.data.errorMessage);
-    }
+    resetFormData();
   };
+
+  useEffect(() => () => {
+    // Reset login form data on unmount
+    resetFormData();
+  }, []);
 
   return (
     <div className={styles.login}>
@@ -41,33 +41,40 @@ function Login() {
           <h2>Login</h2>
         </div>
         <div className={styles['login-banner__content']}>
-          <form
-            className={styles.login__form}
-            onSubmit={(e) => handleLoginFormSubmission(e)}
-          >
-            <input
-              name="email"
-              type="email"
-              placeholder="Your email address"
-              className={styles['login-form__email-input-field']}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              name="password"
-              type="password"
-              placeholder="Your password"
-              className={styles['login-form__password-input-field']}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <CButton
-              block
-              type="submit"
-            >
-              Login
-            </CButton>
-          </form>
+          {
+            storeAuthState.loading ? (
+              // Will replace with a spinner component in the future
+              <p>Loading...</p>
+            ) : (
+              <form
+                className={styles.login__form}
+                onSubmit={(e) => handleLoginFormSubmission(e)}
+              >
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Your email address"
+                  className={styles['login-form__email-input-field']}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="Your password"
+                  className={styles['login-form__password-input-field']}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <CButton
+                  block
+                  type="submit"
+                >
+                  Login
+                </CButton>
+              </form>
+            )
+          }
         </div>
       </div>
     </div>
