@@ -2,15 +2,20 @@ import { AuthActions } from './constants';
 
 const loginInitialState = {
   loading: false,
-  token: null,
+  success: false,
   error: null,
 };
 
 const registrationInitialState = {
   loading: false,
-  token: null,
+  success: false,
   error: null,
 };
+
+/*
+  Note: Will split up this file into 2 separate files (login & registration),
+  each containing a reducer
+*/
 
 // eslint-disable-next-line @typescript-eslint/default-param-last
 export const loginReducer = (state = loginInitialState, action: any): void | any => {
@@ -18,6 +23,7 @@ export const loginReducer = (state = loginInitialState, action: any): void | any
     case AuthActions.LOGIN_REQUEST:
       return {
         ...state,
+        success: false,
         loading: true,
         error: null,
       };
@@ -25,11 +31,12 @@ export const loginReducer = (state = loginInitialState, action: any): void | any
       return {
         ...state,
         loading: false,
-        token: action.payload.jwtToken,
+        success: true,
       };
     case AuthActions.LOGIN_FAILURE:
       return {
         ...state,
+        success: false,
         loading: false,
         error: action.payload.error,
       };
@@ -44,6 +51,7 @@ export const registrationReducer = (state = registrationInitialState, action: an
     case AuthActions.REGISTER_REQUEST:
       return {
         ...state,
+        success: false,
         loading: true,
         error: null,
       };
@@ -51,11 +59,12 @@ export const registrationReducer = (state = registrationInitialState, action: an
       return {
         ...state,
         loading: false,
-        token: action.payload.jwtToken,
+        success: true,
       };
     case AuthActions.REGISTER_FAILURE:
       return {
         ...state,
+        success: false,
         loading: false,
         error: action.payload.error,
       };
