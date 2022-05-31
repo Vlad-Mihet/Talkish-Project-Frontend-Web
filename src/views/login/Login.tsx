@@ -4,19 +4,16 @@ import styles from './login.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from 'src/store/auth/actions';
 import type { TAppState } from 'src/store';
+import isAuthenticated from 'src/utils/isAuthenticated';
+import handleAuthenticatedUserNavigation from './utils/handleAuthenticatedUserNavigation';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const storeAuthState = useSelector((state: TAppState) => state.login);
+  const loginProcessState = useSelector((state: TAppState) => state.login);
 
   const dispatch = useDispatch();
-
-  const resetFormData = (): void => {
-    setEmail('');
-    setPassword('');
-  };
 
   const handleLoginFormSubmission = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -27,10 +24,13 @@ function Login() {
     }));
   };
 
-  useEffect(() => () => {
-    // Reset login form data on unmount
-    resetFormData();
-  }, []);
+  useEffect(() => {
+    const isAuth = isAuthenticated();
+
+    if (isAuth || loginProcessState.success) {
+      handleAuthenticatedUserNavigation();
+    }
+  }, [loginProcessState]);
 
   return (
     <div className={styles.login}>
@@ -40,7 +40,7 @@ function Login() {
         </div>
         <div className={styles['login-banner__content']}>
           {
-            storeAuthState.loading ? (
+            loginProcessState.loading ? (
               // Will replace with a spinner component in the future
               <p>Loading...</p>
             ) : (

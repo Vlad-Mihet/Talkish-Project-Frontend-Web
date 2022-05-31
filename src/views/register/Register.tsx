@@ -4,6 +4,7 @@ import styles from './register.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'src/store/auth/actions';
 import type { TAppState } from 'src/store';
+import { useNavigate } from 'react-router';
 
 function Register() {
   const [firstName, setFirstName] = useState('');
@@ -11,18 +12,13 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const storeAuthState = useSelector((state: TAppState) => state.registration);
+  const navigate = useNavigate();
+
+  const registrationProcessState = useSelector((state: TAppState) => state.registration);
 
   const dispatch = useDispatch();
 
-  const resetFormData = (): void => {
-    setFirstName('');
-    setLastName('');
-    setEmail('');
-    setPassword('');
-  };
-
-  const handleregisterFormSubmission = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleRegistrationFormSubmission = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     dispatch(register({
@@ -33,10 +29,13 @@ function Register() {
     }));
   };
 
-  useEffect(() => () => {
-    // Reset register form data on unmount
-    resetFormData();
-  }, []);
+  useEffect(() => {
+    if (registrationProcessState.success) {
+      // The user might also come from the login page, so we would need a different systen
+      // in order to be able to redirect him accordingly (2 navigation paths prior)
+      navigate('/');
+    }
+  }, [registrationProcessState]);
 
   return (
     <div className={styles.register}>
@@ -46,13 +45,13 @@ function Register() {
         </div>
         <div className={styles['register-banner__content']}>
           {
-            storeAuthState.loading ? (
+            registrationProcessState.loading ? (
               // Will replace with a spinner component in the future
               <p>Loading...</p>
             ) : (
               <form
                 className={styles.register__form}
-                onSubmit={(e) => handleregisterFormSubmission(e)}
+                onSubmit={(e) => handleRegistrationFormSubmission(e)}
               >
                 <input
                   name="firstName"
