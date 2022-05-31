@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable react/no-unstable-nested-components */
 import './assets/styles/main.scss';
 import {
   BrowserRouter as Router,
@@ -24,7 +26,11 @@ function AuthRequiredRoute({ children }: { children: JSX.Element }): JSX.Element
     isUserAuthenticated ? (
       children
     ) : (
-      <Navigate to={`/${Paths.AUTH}/${Paths.LOGIN}`} state={{ from: location }} replace />
+      <Navigate
+        to={`/${Paths.AUTH}/${Paths.LOGIN}`}
+        state={{ from: location }}
+        replace
+      />
     )
   );
 }
