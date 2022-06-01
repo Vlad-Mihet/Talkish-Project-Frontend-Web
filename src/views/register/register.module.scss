@@ -43,6 +43,19 @@
           padding: .35rem;
           font-weight: 600;
         }
+
+        .register-form__no-acount-section {
+          margin-top: 1rem;
+
+          a {
+            color: #58b96b;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
       }
     }
   }

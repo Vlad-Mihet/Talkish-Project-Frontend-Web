@@ -1,18 +1,18 @@
 import { CButton } from 'src/components';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './register.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'src/store/auth/actions';
 import type { TAppState } from 'src/store';
-import { useNavigate } from 'react-router';
+import useHandleAuthUserNavigation from 'src/hooks/useHandleAuthUserNavigation';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 function Register() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const navigate = useNavigate();
 
   const registrationProcessState = useSelector((state: TAppState) => state.registration);
 
@@ -29,13 +29,11 @@ function Register() {
     }));
   };
 
-  useEffect(() => {
-    if (registrationProcessState.success) {
-      // The user might also come from the login page, so we would need a different systen
-      // in order to be able to redirect him accordingly (2 navigation paths prior)
-      navigate('/');
-    }
-  }, [registrationProcessState]);
+  const location = useLocation();
+
+  console.log(location.state);
+
+  useHandleAuthUserNavigation(registrationProcessState);
 
   return (
     <div className={styles.register}>
@@ -91,6 +89,19 @@ function Register() {
                 >
                   Register
                 </CButton>
+                <div className={styles['register-form__no-acount-section']}>
+                  {/* Preserve previous location */}
+                  <Link
+                    to="/auth/login"
+                    state={{
+                      from: {
+                        ...(location.state as any)?.from || null,
+                      },
+                    }}
+                  >
+                    Already have an account?
+                  </Link>
+                </div>
               </form>
             )
           }

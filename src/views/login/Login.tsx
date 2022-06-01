@@ -1,15 +1,18 @@
 import { CButton } from 'src/components';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './login.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from 'src/store/auth/actions';
 import type { TAppState } from 'src/store';
-import isAuthenticated from 'src/utils/isAuthenticated';
-import handleAuthenticatedUserNavigation from './utils/handleAuthenticatedUserNavigation';
+import useHandleAuthUserNavigation from '../../hooks/useHandleAuthUserNavigation';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const location = useLocation();
 
   const loginProcessState = useSelector((state: TAppState) => state.login);
 
@@ -24,13 +27,9 @@ function Login() {
     }));
   };
 
-  useEffect(() => {
-    const isAuth = isAuthenticated();
+  console.log(location.state);
 
-    if (isAuth || loginProcessState.success) {
-      handleAuthenticatedUserNavigation();
-    }
-  }, [loginProcessState]);
+  useHandleAuthUserNavigation(loginProcessState);
 
   return (
     <div className={styles.login}>
@@ -70,6 +69,19 @@ function Login() {
                 >
                   Login
                 </CButton>
+                <div className={styles['login-form__no-acount-section']}>
+                  {/* Preserve previous location */}
+                  <Link
+                    to="/auth/register"
+                    state={{
+                      from: {
+                        ...(location.state as any)?.from || null,
+                      },
+                    }}
+                  >
+                    Don&apos;t have an account?
+                  </Link>
+                </div>
               </form>
             )
           }
