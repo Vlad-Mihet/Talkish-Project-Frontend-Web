@@ -3,4 +3,7 @@ export enum Endpoints {
   BLOGS = 'Blogs',
   TOPICS = 'Topics',
   AUTHORS = 'Authors',
+  AUTH = 'Auth',
+  LOGIN = 'Login',
+  REGISTER = 'Register'
 }

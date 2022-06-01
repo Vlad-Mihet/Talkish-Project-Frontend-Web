@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { CButton } from 'src/components';
 import { Endpoints } from 'src/config';
-import useFetchData from 'src/hooks/useFetchData';
+import useFetchData from 'src/hooks/useAxiosRequest';
 import { Author } from '../../../../../types/models';
 import styles from './recommendedAuthors.module.scss';
 

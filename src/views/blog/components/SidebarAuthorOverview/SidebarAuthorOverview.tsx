@@ -2,7 +2,7 @@ import { CAvatar, CButton } from '../../../../components';
 import styles from './sidebarAuthorOverview.module.scss';
 import PropTypes from 'prop-types';
 import { Endpoints } from '../../../../config';
-import useFetchData from '../../../../hooks/useFetchData';
+import useFetchData from '../../../../hooks/useAxiosRequest';
 
 interface Props {
   authorId: number;

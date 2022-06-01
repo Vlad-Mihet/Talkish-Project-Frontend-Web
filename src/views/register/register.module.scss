@@ -1,0 +1,62 @@
+.register {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .register-banner {
+    width: 30vw;
+    height: 80vh;
+    border: 1px solid rgb(230, 230, 230);
+  
+    .register-banner__header {
+      width: 100%;
+      height: 10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid rgb(230, 230, 230);
+      
+      h2 {
+        margin: 0;
+      }
+    }
+
+    .register-banner__content {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 1.5rem;
+    
+      .register__form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          margin-bottom: 1.5rem;
+          border: 1px solid #333;
+          font-size: 0.9rem;
+          box-sizing: border-box;
+          padding: .35rem;
+          font-weight: 600;
+        }
+
+        .register-form__no-acount-section {
+          margin-top: 1rem;
+
+          a {
+            color: #58b96b;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

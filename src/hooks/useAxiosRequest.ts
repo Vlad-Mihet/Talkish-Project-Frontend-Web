@@ -11,18 +11,24 @@ interface StateType {
   error: Error | AxiosError | null;
 }
 
-function useFetchData(
+function useAxiosRequest(
   url: string,
   requestConfig?: AxiosRequestConfig,
 ): StateType {
+  const axiosRequestConfig = requestConfig || {};
+
   const [state, setState] = useState<StateType>({
     loading: true,
     data: null,
     error: null,
   });
 
+  if (!axiosRequestConfig?.method) {
+    axiosRequestConfig.method = 'GET';
+  }
+
   useEffect(() => {
-    axios.get(url, requestConfig)
+    axios(url, axiosRequestConfig)
       .then((res) => {
         setState({
           ...state,
@@ -43,4 +49,4 @@ function useFetchData(
   return state;
 }
 
-export default useFetchData;
+export default useAxiosRequest;

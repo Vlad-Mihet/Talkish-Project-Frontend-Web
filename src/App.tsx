@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable react/no-unstable-nested-components */
 import './assets/styles/main.scss';
 import {
   BrowserRouter as Router,
@@ -11,6 +13,27 @@ import {
   Blog,
   WriteStory,
 } from './views';
+import Login from './views/login';
+import { Navigate, useLocation } from 'react-router';
+import isAuthenticated from './utils/isAuthenticated';
+import Register from './views/register';
+
+function AuthRequiredRoute({ children }: { children: JSX.Element }): JSX.Element {
+  const location = useLocation();
+  const isUserAuthenticated = isAuthenticated();
+
+  return (
+    isUserAuthenticated ? (
+      children
+    ) : (
+      <Navigate
+        to={`/${Paths.AUTH}/${Paths.LOGIN}`}
+        state={{ from: location }}
+        replace
+      />
+    )
+  );
+}
 
 function App(): JSX.Element {
   return (
@@ -20,7 +43,18 @@ function App(): JSX.Element {
         <Route path={Paths.BLOGS}>
           <Route path={Paths.BLOG} element={<Blog />} />
         </Route>
-        <Route path={Paths.WRITE_STORY} element={<WriteStory />} />
+        <Route
+          path={Paths.WRITE_STORY}
+          element={(
+            <AuthRequiredRoute>
+              <WriteStory />
+            </AuthRequiredRoute>
+          )}
+        />
+        <Route path={Paths.AUTH}>
+          <Route path={Paths.LOGIN} element={<Login />} />
+          <Route path={Paths.REGISTER} element={<Register />} />
+        </Route>
       </Routes>
     </Router>
   );
