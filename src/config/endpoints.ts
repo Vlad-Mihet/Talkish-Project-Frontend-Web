@@ -5,5 +5,6 @@ export enum Endpoints {
   AUTHORS = 'Authors',
   AUTH = 'Auth',
   LOGIN = 'Login',
-  REGISTER = 'Register'
+  REGISTER = 'Register',
+  USERS = 'Users',
 }
