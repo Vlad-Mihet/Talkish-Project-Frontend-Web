@@ -45,3 +45,11 @@ export interface Publication {
   name: string;
   owner: Author;
 }
+
+export interface AuthUser {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  authorId: string;
+}
