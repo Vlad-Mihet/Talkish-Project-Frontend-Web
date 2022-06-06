@@ -14,26 +14,60 @@ import {
   WriteStory,
 } from './views';
 import Login from './views/login';
-import { Navigate, useLocation } from 'react-router';
-import isAuthenticated from './utils/isAuthenticated';
+import { useLocation, useNavigate } from 'react-router';
 import Register from './views/register';
+import useAuthUser from './hooks/useAuthUser';
+import { useEffect } from 'react';
+import isAuthenticated from './utils/isAuthenticated';
 
-function AuthRequiredRoute({ children }: { children: JSX.Element }): JSX.Element {
+function AuthorOnlyRoute({ children }: { children: JSX.Element }): JSX.Element {
+  const location = useLocation();
+  const authUser = useAuthUser();
+  const navigate = useNavigate();
+
+  const isAuth = isAuthenticated();
+
+  useEffect(() => {
+    // Ensure that the user is actually authenticated
+    if (!isAuth) {
+      navigate(`/${Paths.AUTH}/${Paths.LOGIN}`, {
+        replace: true,
+        state: {
+          from: location,
+        },
+      });
+    }
+
+    // Ensure that the user has been loaded & that the user has an authorId that isn't nullish (!=0)
+    if (authUser.authorId !== '' && !authUser.authorId) {
+      navigate('/', {
+        replace: true,
+        state: {
+          from: location,
+        },
+      });
+    }
+  }, [authUser]);
+
+  return children;
+}
+
+/* function AuthRequiredRoute({ children }: { children: JSX.Element }): JSX.Element {
   const location = useLocation();
   const isUserAuthenticated = isAuthenticated();
 
-  return (
-    isUserAuthenticated ? (
-      children
-    ) : (
+  if (!isUserAuthenticated) {
+    return (
       <Navigate
         to={`/${Paths.AUTH}/${Paths.LOGIN}`}
         state={{ from: location }}
         replace
       />
-    )
-  );
-}
+    );
+  }
+
+  return children;
+} */
 
 function App(): JSX.Element {
   return (
@@ -46,9 +80,9 @@ function App(): JSX.Element {
         <Route
           path={Paths.WRITE_STORY}
           element={(
-            <AuthRequiredRoute>
+            <AuthorOnlyRoute>
               <WriteStory />
-            </AuthRequiredRoute>
+            </AuthorOnlyRoute>
           )}
         />
         <Route path={Paths.AUTH}>
