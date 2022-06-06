@@ -27,8 +27,6 @@ function Login() {
     }));
   };
 
-  console.log(location.state);
-
   useHandleAuthUserNavigation(loginProcessState);
 
   return (
