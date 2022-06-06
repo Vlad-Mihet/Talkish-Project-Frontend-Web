@@ -31,8 +31,6 @@ function Register() {
 
   const location = useLocation();
 
-  console.log(location.state);
-
   useHandleAuthUserNavigation(registrationProcessState);
 
   return (
