@@ -1,6 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
-export default function Drafts() {
+
+import { BlogsContainer } from '../components';
+import { DraftBlog as DraftBlogType } from '../types';
+
+type PropsType = {
+  blogs: DraftBlogType[];
+};
+
+export default function Drafts({ blogs }: PropsType) {
   return (
-    <div>Here we'll see draft blogs</div>
+    <BlogsContainer blogs={blogs} />
   );
 }

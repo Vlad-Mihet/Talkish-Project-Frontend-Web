@@ -23,7 +23,7 @@
         display: flex;
         width: 100%;
 
-        div {
+        .option, .option--selected {
           cursor: pointer;
           box-sizing: border-box;
           padding: 0.5rem 0;
@@ -37,6 +37,14 @@
             font-weight: 600;
             font-size: 0.85rem;
             color: #757575;
+          }
+
+          &--selected {
+            border-bottom: 2px solid #333;
+
+            a {
+              color: #333;
+            }
           }
         }
       }

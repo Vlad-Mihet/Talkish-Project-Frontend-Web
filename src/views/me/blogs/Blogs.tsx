@@ -1,13 +1,15 @@
 import Layout from 'src/layout/Layout';
 import { Outlet } from 'react-router';
 import { RecommendedAuthors, RecommendedTopics, Sidebar } from 'src/layout/components';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import styles from './blogs.module.scss';
 import { CButton } from 'src/components';
 import { Link } from 'react-router-dom';
 import { Paths } from 'src/routes';
 
 export default function Blogs() {
+  const [selectedBlogsView, setSelectedBlogsView] = useState<'drafts' | 'published'>('drafts');
+
   return (
     <Layout
       sidebar={
@@ -40,13 +42,13 @@ export default function Blogs() {
             </div>
             <div className={styles['blogs-mode-selection-container']}>
               <div className={styles['blogs-mode-selection-container__options']}>
-                <div>
-                  <Link to={Paths.DRAFTS}>
+                <div className={selectedBlogsView === 'drafts' ? styles['option--selected'] : styles.option}>
+                  <Link to={Paths.DRAFTS} onClick={() => setSelectedBlogsView('drafts')}>
                     Drafts
                   </Link>
                 </div>
-                <div>
-                  <Link to={Paths.PUBLISHED}>
+                <div className={selectedBlogsView === 'published' ? styles['option--selected'] : styles.option}>
+                  <Link to={Paths.PUBLISHED} onClick={() => setSelectedBlogsView('published')}>
                     Published
                   </Link>
                 </div>
@@ -55,6 +57,8 @@ export default function Blogs() {
             </div>
           </div>
         </div>
+        {/* Find a way to pass appropriate blogs data
+          to the outlet (drafts or published blogs view) */}
         <Outlet />
       </div>
     </Layout>
