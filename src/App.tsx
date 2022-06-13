@@ -12,6 +12,8 @@ import {
   Home,
   Blog,
   WriteStory,
+  AuthorBlogs,
+  AuthorDraftBlogs,
 } from './views';
 import Login from './views/login';
 import { useLocation, useNavigate } from 'react-router';
@@ -76,6 +78,11 @@ function App(): JSX.Element {
         <Route path={Paths.ROOT} element={<Home />} />
         <Route path={Paths.BLOGS}>
           <Route path={Paths.BLOG} element={<Blog />} />
+        </Route>
+        <Route path={Paths.ME}>
+          <Route path={Paths.BLOGS} element={<AuthorBlogs />}>
+            <Route path={Paths.DRAFTS} element={<AuthorDraftBlogs />} />
+          </Route>
         </Route>
         <Route
           path={Paths.WRITE_STORY}

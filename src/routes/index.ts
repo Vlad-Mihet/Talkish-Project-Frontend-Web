@@ -10,6 +10,9 @@ export enum Paths {
   AUTH = 'auth',
   LOGIN = 'login',
   REGISTER = 'register',
+  ME = 'me',
+  PUBLISHED = 'published',
+  DRAFTS = 'drafts',
 }
 
 export enum UsefulLinks {
